@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b849296c56.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div th:replace="/header::navbar"></div>
+
+<form class="form-horizontal" th:action="@{/registerInAdmin}" th:object="${user}" method="post">
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">Username</label>
+            <div class="controls">
+                <input type="text" id="username" name="username" th:field="*{name}" class="input-xlarge">
+                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="surname">Surname</label>
+            <div class="controls">
+                <input type="text" id="surname" name="surname" th:field="*{lastName}" class="input-xlarge">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="email">E-mail</label>
+            <div class="controls">
+                <input type="text" id="email" name="email" th:field="*{email}" class="input-xlarge">
+                <p class="help-block">Please provide your E-mail</p>
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <input type="password" id="password" name="password" th:field="*{password}" class="input-xlarge">
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+
+    <span th:utext="${successMessage}"></span>
+    <div class="alert alert-success alert-dismissible col-sm-12"
+         th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">×</button>
+        <ul th:each="data : ${bindingResult.getAllErrors()}">
+            <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+        </ul>
+    </div>
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b849296c56.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div th:replace="/header::navbar"></div>
+
+
+<!--/*@thymesVar id="userDetailOverAOP" type="com.weblogin.demo.aspect.LoggingAspect"*/-->
+<div class="container" >
+
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+    </div>
+    <div class="alert alert-info alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+    </div>
+<!--    <div class="alert alert-info alert-dismissible fade in">-->
+<!--        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+<!--        <strong>Info!</strong> <h3 th:text="${userDetailOverAOP}"></h3>-->
+<!--    </div>-->
+<!--    <div  >-->
+<!--        <h3 th:utext="${userDetailOverAOP}+'Burada'"> </h3>-->
+<!--    </div>-->
+</div>
+
+
+
+
+
+
+<!-- Default dropleft button -->
+<!--<div class="btn-group dropleft">-->
+<!--    <button type="button" style="position: relative;left: 1582px;" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--        Notifications'-->
+<!--    </button>-->
+<!--    <div class="dropdown-menu" >-->
+<!--            <a class="dropdown-item" href="#">Action</a>-->
+<!--            <a class="dropdown-item" href="#">Another action</a>-->
+<!--            <a class="dropdown-item" href="#">Something else here</a>-->
+<!--            <div class="dropdown-divider"></div>-->
+<!--            <a class="dropdown-item" href="#">Separated link</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Split dropleft button &ndash;&gt;-->
+<!--<div class="btn-group">-->
+<!--    <div class="btn-group dropleft" role="group">-->
+
+<!--        <div class="dropdown-menu">-->
+<!--            &lt;!&ndash; Dropdown menu links &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+
+</body>
+</html>

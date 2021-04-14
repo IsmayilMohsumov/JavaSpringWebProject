@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>-->
+<!--    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+<!--    teze-->
+    <script src="/js/ajax.js" type="text/javascript"></script   >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/c668a7f6f1.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+</head>
+<body>
+
+<!--<span th:utext="${detailsOfUser}"></span>-->
+<!--    <h1 th:text="${detailsOfUser.getName()}"> </h1>-->
+<!--    <h1 th:text="${detailsOfUser.getImage()}"> </h1>-->
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+<!--            <div>-->
+<!--                <a class="nav-link" href="/logout" > Logout</a>-->
+<!--            </div>-->
+            <h4 class="modal-title" id="myModalLabel"  th:text="'More About ' + ${detailsOfUser.getName()}"></h4><a style="position: absolute;right: 17px;top: 17px;" class="nav-link" href="/logout" > Logout</a>
+        </div>
+        <div class="modal-body">
+            <center>
+                <h3 class="media-heading" th:utext="${detailsOfUser.getName()}+ ' ' + ${detailsOfUser.getLastName()}"></h3>
+                <small style="color: darkseagreen;" th:text="${detailsOfUser.getEmail()}"></small>   <br>
+                <img th:src="${detailsOfUser.getImage()}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a><hr>
+                <span><strong>Skills: </strong></span>
+                <div th:if="${skillsOfUser.empty}">
+                    <b>No Skills</b>
+                </div>
+                <div style="display: inline" th:each="skillList : ${skillsOfUser}">
+                <span class="label label-info" th:text="${skillList}"></span>
+                </div>
+
+<!--                <span class="label label-info">Microsoft Office</span>-->
+<!--                <span class="label label-success">Windows XP, Vista, 7</span>-->
+                <button onclick="document.getElementById('id01').style.display='block'" class="label label-primary"  id="addSkillBtn">Add/Edit</button>
+            </center>
+
+            <div class="w3-container">
+
+
+                <div id="id01" class="w3-modal">
+                    <div class="w3-modal-content w3-card-4">
+                        <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id01').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                            <h2>Add Skill</h2>
+                        </header>
+                        <div class="w3-container">
+                            <!--             -->
+
+                                <div class="form-group form-group-lg">
+                                    <label class="col-sm-2 control-label">Skill Name</label>
+                                    <div class="col-sm-10">
+<!--                                        <input style="width: 67%;!important;" type="text" name="skillName"  class="form-control" id="skillName"/>-->
+                                        <div class="container">
+                                        <form class="form-horizontal" id="add-form">
+                                                <div class="form-group">
+<!--                                                    <input type="text" name="name" class="form-control" value="Paresh" required="">-->
+                                                    <button style="position: absolute;right: 34px;top: 0px" type="submit" id="bth-search"
+                                                            class="btn btn-success save-btn">ADD  </button>
+                                                    <input style="width: 50%;!important;" type="text" name="skillName" placeholder="Java" class="form-control" id="skillName"/>
+                                                </div>
+
+<!--                                                <button type="submit" class="btn btn-success save-btn">Save</button>-->
+                                            <br/>
+                                            <table style="width: 50%" class="table table-bordered data-table">
+                                                <thead>
+                                                <th style="display: none"></th>
+                                                <th>Name</th>
+                                                <th width="200px">Action</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:if="${skillsOfUser.empty}">
+                                                    <td>No Skills</td>
+                                                </tr>
+                                                <tr th:each="skillList :${skillsOfUser}">
+                                                    <td style="display: none"><input type="hidden" name="record"/></td>
+                                                    <td><span th:text="${skillList}"></span></td>
+                                                    <td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td>
+                                                </tr>
+                                                </tbody>
+
+                                            </table>
+
+                                        </form>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <p id="success"> </p>
+
+<!--                                <div class="form-group">-->
+<!--                                    <div class="col-sm-offset-2 col-sm-10">-->
+<!--                                        <button type="submit" id="bth-search"-->
+<!--                                                class="btn btn-primary btn-lg">ADD-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+                        </div>
+                        <footer class="w3-container w3-teal">
+                            <buttn  style="position: relative;left: 90%;" id="bth-save" class="btn btn-success save-btn">Save</buttn>
+
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <hr>
+                <p class="text-left" ><strong style="text-align: center"> BIO:</strong>
+
+                    <a ><i style="position: absolute;right: 20px;cursor: pointer;" class="fas fa-pen"></i></a>
+                   </p>
+                    <p id="bioId" th:utext="${detailsOfUser.getDescription()}"></p>
+                    <input class="forBack" type="hidden" style="display: none;">
+                <br>
+        </div>
+<!--        <div class="modal-footer">-->
+<!--            <center>-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>-->
+<!--            </center>-->
+<!--        </div>-->
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(".fa-pen").click(function () {
+        var temp = $("#bioId").html();
+         $("#bioId").html('<input name="edit_name" class="typeBio" style="width: 95%" value="'+temp+'">');
+         $(".forBack").text(temp);
+        $("#bioId").append("<a ><i style='cursor: pointer;' class='fas fa-times cancelBtn'></i></a><a><i style='cursor: pointer;' class='fas fa-check-circle updateBtn'></i></a>");
+        $(".fa-pen").hide(true);
+
+
+    });
+
+    $("body").on("click",".cancelBtn",function () {
+        var cancel=$(".forBack").text();
+        $("#bioId").html(cancel);
+        $(".fa-pen").show();
+    });
+
+    $("body").on("click",".updateBtn",function () {
+        var descriptionName=$(".typeBio").val();
+        var description={
+            "newName":descriptionName
+        };
+
+        $.ajax({
+            type : "POST",
+            // contentType : "application/json",
+            url : "updateDesc?"+$.param(description),
+            // data : 'skillName='+name,
+            dataType : 'json',
+            contentType:'application/json',
+            // success:function (object) {
+            //     alert(JSON.stringify(object))
+            // },
+            // error:function (object) {
+            //     alert("error:"+JSON.parse(object));
+            //     alert("error:"+JSON.stringify(object));
+            // }
+        });
+
+
+        $("#bioId").html(descriptionName);
+        $(".fa-pen").show();
+
+    });
+
+    //save i basanda modal da reload edir
+    $("#bth-save").click(function () {
+        $("#id01").hide();
+        location.reload();
+    });
+
+
+    //modaldan cixib tezden girende yene java yazsin ora
+    $("#addSkillBtn").click(function () {
+        $("input[name='skillName']").attr("placeholder","Java");
+    });
+
+    $("form").submit(function(e){
+
+        e.preventDefault();
+            // PREPARE FORM DATA
+             var name = $("input[name='skillName']").val();
+
+
+            if(name==null||name===""||typeof name==="undefined"){
+                // $("input[name='skillName']").val("Cannot be empty");
+                $("input[name='skillName']").attr("placeholder","Cannot be empty");
+            }else {
+
+
+            // DO POST
+            $.ajax({
+                type : "POST",
+                // contentType : "application/json",
+                url : "addSkill",
+                data : 'skillName='+name,
+                // dataType : 'json',
+                success : function(name) {
+                    if(name=="hasSkill"){
+                        $("input[name='skillName']").val('');
+                        $("input[name='skillName']").attr("placeholder","User already has this kind of Skill!");
+                    }else{
+
+                    if (name!=null) {
+                    // $("form").submit(function(e){
+                    e.preventDefault();
+                    // var name = $("input[name='skillName']").val();
+                    // var email = $("input[name='email']").val();
+
+                    $(".data-table tbody").append("<tr data-name='"+name+"'><td>"+name+"</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
+
+                    $("input[name='skillName']").val('');
+                    // $("input[name='email']").val('');
+                    // });
+                    } else {
+                        $("#success").html("<strong>Error</strong>");
+                    }}
+
+                },
+                error : function(data) {
+                    console.log("ERROR: ", data);
+                }
+            });}
+    });
+
+
+    // Delete
+    $("body").on("click", ".btn-delete", function(){
+        $(this).parents("tr").remove();
+        // var skill=$(this).parents("tr").val();
+        // alert(skill);
+
+        var skillName = $(this).parents('tr').find("td:eq(1)").text();
+
+        var skills={
+            "nameOfSkill":skillName
+        };
+
+
+
+        $.ajax({
+            type : "POST",
+            // contentType : "application/json",
+            url : "deleteSkill?"+$.param(skills),
+            // data : 'skillName='+name,
+            dataType : 'json',
+            contentType:'application/json',
+            // success:function (data) {
+            //     alert("silindi"+data);
+            // }
+        });
+
+
+    });
+
+
+    //Edit button
+    $("body").on("click", ".btn-edit", function(){
+        var name = $(this).parents('tr').find("td:eq(1)").text();
+
+
+        //last added 12:09 bunu goturub kohne deyer ile skill i tapacam ve update isi >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $(this).parents("tr").find("td:eq(0)").text(name);
+
+        // var email = $(this).parents("tr").attr('data-email');
+
+        $(this).parents("tr").find("td:eq(1)").html('<input name="edit_name" value="'+name+'">');
+        // $(this).parents("tr").find("td:eq(1)").html('<input name="edit_email" value="'+email+'">');
+
+        $(this).parents("tr").find("td:eq(2)").prepend("<button class='btn btn-info btn-xs btn-update'>Update</button><button class='btn btn-warning btn-xs btn-cancel'>Cancel</button>")
+        $(this).hide();
+    });
+
+
+    //Cancelling
+    $("body").on("click", ".btn-cancel", function(){
+        var name =$(this).parents('tr').find("td:eq(0)").text();
+        alert("cancelde :"+name);
+        // var email = $(this).parents("tr").attr('data-email');
+
+        $(this).parents("tr").find("td:eq(1)").text(name);
+        // $(this).parents("tr").find("td:eq(1)").text(email);
+
+        $(this).parents("tr").find(".btn-edit").show();
+        $(this).parents("tr").find(".btn-update").remove();
+        $(this).parents("tr").find(".btn-cancel").remove();
+    });
+
+    //Updating
+    $("body").on("click", ".btn-update", function(){
+        var newSkillName = $(this).parents("tr").find("input[name='edit_name']").val();
+        var oldSkillName=$(this).parents('tr').find("td:eq(0)").text();
+        alert("teze skill"+newSkillName);
+        alert("kohnesi skill"+oldSkillName);
+
+
+        var skillsForEdit={
+            "newName":newSkillName,
+            "oldName":oldSkillName
+        };
+
+
+
+        $.ajax({
+            type : "POST",
+            // contentType : "application/json",
+            url : "updateSkill?"+$.param(skillsForEdit),
+            // data : 'skillName='+name,
+            dataType : 'json',
+            contentType:'application/json',
+            // success:function (object) {
+            //     alert(JSON.stringify(object))
+            // },
+            // error:function (object) {
+            //     alert("error:"+JSON.parse(object));
+            //     alert("error:"+JSON.stringify(object));
+            // }
+        });
+
+
+
+
+        // var email = $(this).parents("tr").find("input[name='edit_email']").val();
+
+        $(this).parents("tr").find("td:eq(1)").text(newSkillName);
+        // $(this).parents("tr").find("td:eq(1)").text(email);
+
+        $(this).parents("tr").attr('data-name', newSkillName);
+        // $(this).parents("tr").attr('data-email', email);
+
+        $(this).parents("tr").find(".btn-edit").show();
+        $(this).parents("tr").find(".btn-cancel").remove();
+        $(this).parents("tr").find(".btn-update").remove();
+    });
+</script>
+
+
+</body>
+</html>
